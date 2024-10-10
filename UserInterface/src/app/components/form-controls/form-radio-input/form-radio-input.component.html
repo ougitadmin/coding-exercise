@@ -1,0 +1,19 @@
+<div class="form-radio-input">
+  <input
+    type="radio"
+    [id]="'form-input-' + id"
+    [name]="name"
+    [value]="optionValue"
+    [checked]="optionValue === value"
+    (change)="onInputChange($event)"
+    [ngClass]="{'error-border': error}"
+    [attr.aria-invalid]="error ? 'true' : 'false'"
+    [attr.aria-describedby]="error ? id + '-error' : null"
+  >
+  @if(error) {
+    <i class="fa-solid fa-xmark checkmark"></i>
+  } @else {
+    <i class="fa-solid fa-check checkmark"></i>
+  }
+  <label [for]="'form-input-' + id" [ngClass]="{'isFlagged': isFlagged}">{{ label }}</label>
+</div>

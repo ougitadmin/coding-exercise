@@ -1,0 +1,118 @@
+.navigation {
+  background-color: var(--theme-black);
+  position: fixed;
+  width: 60px;
+  height: calc(100% -  var(--menu-height));
+  top: var(--menu-height);
+  left: 0;
+  z-index:100000;
+  overflow: hidden;
+  color:var(--theme-white);
+  user-select: none;
+  transition: all 0.2s;
+}
+
+.navigation.open {
+  box-shadow: rgba(0, 0, 0, 0.5) 0 14px 14px;
+}
+
+.navigation.open, .navigation.is-open {
+  width: 230px;
+  transition: all 0.2s;
+}
+
+.navigation span {
+  width:0;
+  display: inline-block;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.navigation.open span, .navigation.is-open span {
+  width: initial;
+  padding-left: 6px;
+  padding-right: 8px;
+  opacity: 1;
+  transition: all 0.2s;
+}
+
+.navigation ul {
+  list-style: none;
+  margin: 0 0 0 6px;
+  padding: 0;
+  width: 55px;
+  overflow: hidden;
+  transition: padding 0.2s, margin 0.2s;
+
+}
+
+.navigation.open ul, .navigation.is-open ul{
+  width: 230px;
+  padding: 0;
+  transition: padding 0.2s, margin 0.2s;
+}
+
+.navigation ul li {
+  padding: 8px;
+  margin: 0;
+  white-space: nowrap;
+  transition: padding 0.2s, margin 0.2s;
+}
+
+.navigation ul li a {
+  color: var(--theme-white);
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 16px;
+  transition: background-color 0.3s, padding 0.2s;
+  cursor:pointer;
+}
+
+.navigation.open ul li a, .navigation.is-open ul li a{
+  padding: 6px 6px;
+  transition: padding 0.2s;
+}
+
+.navigation ul li a:not(.no-decoration).active {
+  background-color: var(--highlight);
+  color: var(--white);
+  transition: background-color 0.5s, padding 0.2s;
+}
+
+.navigation ul li a:not(.no-decoration):hover {
+  background-color: var(--hover);
+  color: var(--white);
+  transition: background-color 0.5s, padding 0.2s;
+}
+
+.icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--grey-mid);
+  margin: 12px 0;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    width: 100%;
+    height: calc(100% - var(--menu-height));
+  }
+
+  .navigation.open, .navigation.is-open {
+    width: 100%;
+  }
+
+  .navigation ul {
+    width: calc(100% - 12px);
+  }
+
+  .navigation.open ul, .navigation.is-open ul {
+    width: 100%;
+  }
+}

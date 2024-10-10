@@ -1,0 +1,29 @@
+<div class="form-input">
+  <label [for]="id">{{ label }}</label>
+  <div class="select-wrapper">
+    <select [id]="id"
+            [name]="name"
+            [ngClass]="{'error-border': error}"
+            (change)="onSelectChange($event)"
+            [value]="value"
+            [attr.aria-invalid]="error ? 'true' : 'false'"
+            [attr.aria-describedby]="error ? id + '-error' : null"
+    >
+      @for (option of options; track option) {
+        <option
+          [value]="option.value"
+          [selected]="option.value === value"
+          [attr.aria-label]="option.label"
+        >
+          {{ option.label }}
+        </option>
+      }
+    </select>
+    <i class="fa fa-chevron-down"></i>
+  </div>
+  @if (error) {
+    <div class="error-message" [id]="id + '-error'" role="alert" aria-live="assertive">
+      <i class="fa-duotone fa-solid fa-triangle-exclamation"></i> {{ error }}
+    </div>
+  }
+</div>

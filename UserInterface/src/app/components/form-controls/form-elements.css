@@ -1,0 +1,13 @@
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.error-border {
+  border-color: var(--red) !important;
+}
+
+.error-message {
+  color: var(--red);
+  margin-top: 0.5rem;
+}

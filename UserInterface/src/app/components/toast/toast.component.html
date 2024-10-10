@@ -1,0 +1,42 @@
+<div (mouseout)="pauseTimer = false"
+     (mouseover)="pauseTimer = true"
+     [ngClass]="{
+     'on': toastItem.open
+     }" class="toast {{ toastItem.type }}"
+     role="alert"
+     aria-live="assertive"
+     aria-atomic="true">
+  <div class="container">
+    <div [innerHTML]="toastItem.title" class="title"></div>
+    <div class="body">
+      <div *ngFor="let item of toastItem.body" [innerHTML]="item"></div>
+      @if(toastItem.link){
+        <a [routerLink]="toastItem.link.url" class="link" *ngIf="toastItem.link.type !== 'button'">{{ toastItem.link.label }}</a>
+
+        @if(toastItem.link.type==='button'){
+          <button class="link"
+                  [routerLink]="toastItem.link.url"
+                  class="{{ classes[toastItem.type] }}">
+            {{ toastItem.link.label }}
+          </button>
+        }
+      }
+    </div>
+    <button (click)="closeToast()" class="icon-close" aria-label="Close" aria-keyshortcuts="Escape">&#10005;</button>
+  </div>
+  @if(toastItem.autoClose && round(remaining / 1000) > 0){
+    <span class='timer'>{{ round(remaining / 1000) }}</span>
+  }
+  @if(toastItem.autoClose){
+    <div [ngClass]="{
+       'success': toastItem.type == 'success',
+       'info': toastItem.type == 'info',
+       'warn': toastItem.type == 'warn',
+       'error': toastItem.type == 'error'
+        }"
+         [ngStyle]="{
+           'width' : ((remaining * 100) / toastItem.autoClose) + '%'
+         }"
+         class="timeBar"></div>
+  }
+</div>

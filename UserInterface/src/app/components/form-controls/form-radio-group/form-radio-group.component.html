@@ -1,0 +1,11 @@
+<div class="form-radio-group">
+  <label [for]="id">{{ label }}</label>
+  <div>
+    <ng-content></ng-content>
+  </div>
+  @if(error) {
+    <div class="error-message" role="alert" aria-live="assertive">
+      <i class="fa-duotone fa-solid fa-triangle-exclamation"></i> {{ error }}
+    </div>
+  }
+</div>

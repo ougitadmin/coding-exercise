@@ -1,0 +1,52 @@
+<div class="menu">
+  <div class="left">
+    <div class="menu-button" [class.active]="menuState" [attr.aria-expanded]="menuState">
+      <i class="fa-duotone fa-sidebar" (click)="toggleMenu()" aria-label="Toggle Menu"></i>
+    </div>
+    <img ngSrc="assets/images/hoops.png" class="hoops" alt="Hoops Logo" height="30" width="40">
+    @if (theme) {
+      <img ngSrc="assets/images/polaris.png" class="polaris" alt="Polaris Logo" height="36" width="100">
+    } @else {
+      <img ngSrc="assets/images/polaris_dark.png" class="polaris" alt="Polaris Dark Logo" height="36" width="100">
+    }
+
+  </div>
+  <div class="center">
+    <input type="text" placeholder="Search" class="search" aria-label="Search"
+           [ngClass]="{'has-value': inputValue !== ''}" (input)="onInputChange($event)">
+  </div>
+  <div class="right">
+    <ul role="navigation">
+      <li>
+        @if (theme) {
+          <a (click)="toggleTheme()" aria-label="Switch to Dark Theme">
+            <i class="fa-duotone
+              fa-sun"></i>
+            <span>Dark</span>
+          </a>
+        } @else {
+          <a (click)="toggleTheme()" aria-label="Switch to Light Theme">
+            <i class="fa-duotone
+              fa-moon-stars"></i>
+            <span>Light</span>
+          </a>
+        }
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="settings" aria-label="Settings">
+          <i class="fa-duotone fa-sliders"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="profile" aria-label="Profile">
+          <i class="fa-solid fa-user"></i>
+          <span>Carl Fearby</span>
+        </a>
+        <a routerLink="profile" class="no-decoration" aria-label="Profile Picture">
+          <img ngSrc="assets/images/profile.png" height="120" width="120" class="profile" alt="Profile Picture">
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

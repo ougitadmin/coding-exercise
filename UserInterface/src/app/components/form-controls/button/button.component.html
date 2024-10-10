@@ -1,0 +1,12 @@
+<button
+  [ngClass]="{
+    'btn-warning': state === 'warning',
+    'btn-error': state === 'error',
+    'btn-primary': state === 'primary',
+    'btn-secondary': state === 'secondary'
+  }"
+  [disabled]="disabled"
+  (click)="handleClick($event)"
+>
+  <ng-content></ng-content>
+</button>
